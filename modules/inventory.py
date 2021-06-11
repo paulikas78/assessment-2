@@ -9,7 +9,7 @@ from .customers import Customers
 
 class Inventory:
     
-    def __init__(self, name):
+    def __init__(self, customers, rentals):
         self.name = name
         self.customers = Customers.get_all_customers()
         self.rentals = Rentals.get_all_rentals()
@@ -37,11 +37,11 @@ class Inventory:
                             print(f"customer rental(s): {customer.rental.first_name} {customer.rental.last_name}")
                             
     @classmethod
-    def get_all_customer_rentalss(cls):
-        with open(path) as customer_rentals_file:
-            reader = csv.DictReader(customer_rentals_file)
-            customer_rentals_list = []
+    def get_inventory(cls):
+        with open(path) as inventory_file:
+            reader = csv.DictReader(inventory_file)
+            inventory_list = []
             for row in reader:
-                new_customer_rentals = dict(row)
-                customer_rentals_list.append(new_customer_rentals)
-        return customer_rentals_list
+                new_inventory = dict(row)
+                inventory_list.append(new_inventory)
+        return inventory_list

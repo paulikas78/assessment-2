@@ -8,7 +8,7 @@ from .customers import Customers
 class Rentals:
     maximum_rentals = 3
     
-      def __init__(self,id,title,rating,copies_available):
+    def __init__(self,id,title,rating,copies_available):
         self.id = id
         self.title = title
         self.rating = rating
@@ -23,7 +23,7 @@ class Rentals:
         else:
             self.copies_available = new_copies_available
             
-    def return_movies(self, copies):
+    def return_movies(self, title, copies):
         self.copies_available += copies
 
     def get_copies_available(self):

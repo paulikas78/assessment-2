@@ -16,6 +16,7 @@ class Interface:
     def __init__(self):
         self.inventory = Inventory()
         self.rentals = Rentals()
+        self.customers = Customers()
         self.all_customers = []
 
     def run(self): # skeleton of choices available in welcome menu

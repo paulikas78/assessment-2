@@ -9,32 +9,14 @@ from .customers import Customers
 
 class Inventory:
     
-    def __init__(self, customers, rentals):
+    def __init__(self):
         self.name = name
         self.customers = Customers.get_all_customers()
         self.rentals = Rentals.get_all_rentals()
         
-    def all_customers(self):
-        return self.customers
-    
-    def find_customer_with_id(self, id):
-        for customer in self.customers:
-            if customer.id == id:
-                return customer
-            else:
-                print(f"{id} not found")
-                return None
-            
-    def assign_rental_to_customer(self):
-        customer_id = Inventory.get_all_customers()
-        for value in customer_id:
-            for customer in self.customers:
-                if int(customer.id) == int(value["customer_id"]):
-                    for rental in self.rentals:
-                        print(f"rental: {rental}")
-                        if rental.id == int(value["rental_id"]):
-                            customer.rental = rental
-                            print(f"customer rental(s): {customer.rental.first_name} {customer.rental.last_name}")
+    def print_inventory(self):
+        video = Inventory.get_inventory()
+        print(f"video id: {video.id}, title: {video.title}, rating: {video.rating}, copies available: {video.copies_available}")     
                             
     @classmethod
     def get_inventory(cls):

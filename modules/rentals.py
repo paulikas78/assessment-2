@@ -14,7 +14,7 @@ class Rentals:
         self.rating = rating
         self.copies_available = copies_available
         
-    def rent_out_movie(self, copies):
+    def rent_out_movies(self, title, copies):
         new_copies_available = self.copies_available - copies
         if copies > maximum_rentals:
             print(f"YOU CAN ONLY HAVE {maximum_rentals} videos rented at once.")
@@ -23,7 +23,7 @@ class Rentals:
         else:
             self.copies_available = new_copies_available
             
-    def return_movie(self, copies):
+    def return_movies(self, copies):
         self.copies_available += copies
 
     def get_copies_available(self):

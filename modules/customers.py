@@ -14,7 +14,7 @@ class Customers:
     def all_customers(self):
         return self.customers
     
-    def find_customer_with_id(self, id):
+    def find_customer_with_id(self, id):   # verifies customer id / registration
         for customer in self.customers:
             if customer.id == id:
                 return customer
@@ -22,7 +22,7 @@ class Customers:
                 print(f"{id} not found")
                 return None
         
-    def assign_rental_to_customer(self):
+    def assign_rental_to_customer(self):    # assigns video rental to customer
         customer_id = Customers.get_all_customers()
         for value in customer_id:
             for customer in self.customers:
@@ -33,7 +33,7 @@ class Customers:
                             customer.rental = rental
                             print(f"customer rental(s): {customer.rental.first_name} {customer.rental.last_name}")    
         
-    @classmethod
+    @classmethod   # acquires customer data
     def get_all_customers(cls):
         with open(path) as customers_file:
             reader = csv.DictReader(customers_file)
@@ -44,5 +44,5 @@ class Customers:
         return customers_list
         
         
-print(Customers.get_all_customers())
+
 

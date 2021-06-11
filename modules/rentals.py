@@ -14,7 +14,11 @@ class Rentals:
         self.rating = rating
         self.copies_available = copies_available
         
-    def rent_out_movies(self, title, copies):
+     
+     
+     # allows video rental, as long as inventory is available and customer has not yet rented out 3 videos, simultaneously.   
+        
+    def rent_out_movies(self, title, copies): 
         new_copies_available = self.copies_available - copies
         if copies > maximum_rentals:
             print(f"YOU CAN ONLY HAVE {maximum_rentals} videos rented at once.")
@@ -23,11 +27,23 @@ class Rentals:
         else:
             self.copies_available = new_copies_available
             
+            
+            
+    # allows movies to be returned        
+            
     def return_movies(self, title, copies):
         self.copies_available += copies
 
+
+
+# allows copies of movies available to be viewed.
+
     def get_copies_available(self):
         return self.copies_available
+    
+    
+    
+ # returns list of videos rented and customers to whom they have been rented.   
     
     @classmethod
     def get_all_customer_rentals(cls):

@@ -6,7 +6,6 @@ path = os.path.join(my_path, "../data/inventory.csv")
 from .rentals import Rentals
 from .customers import Customers
 
-
 class Inventory:
     
     def __init__(self):
@@ -14,11 +13,11 @@ class Inventory:
         self.customers = Customers.get_all_customers()
         self.rentals = Rentals.get_all_rentals()
         
-    def print_inventory(self):
+    def print_inventory(self): # prints inventory of all videos.
         video = Inventory.get_inventory()
         print(f"video id: {video.id}, title: {video.title}, rating: {video.rating}, copies available: {video.copies_available}")     
                             
-    @classmethod
+    @classmethod # searches inventory
     def get_inventory(cls):
         with open(path) as inventory_file:
             reader = csv.DictReader(inventory_file)

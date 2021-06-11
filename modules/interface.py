@@ -2,7 +2,7 @@ from modules.customers import Customers
 from modules.inventory import Inventory
 from modules.rentals import Rentals
 
-class Interface:
+class Interface:    # creates interface for customers to use, regarding their respective accounts.
 
     menu_options = ["""
     1. View video inventory
@@ -13,7 +13,7 @@ class Interface:
     6. Exit
     """]
 
-    def __init__(self):
+    def __init__(self):                
         self.inventory = Inventory()
         self.rentals = Rentals()
         self.customers = Customers()
@@ -49,7 +49,7 @@ class Interface:
         print("*******************************")
 
 
-   # promt user to make desired selection:
+   # promts user to make desired selections:
     def get_user_menu_choice(self):
         num_choices = len(self.menu_options)
         if num_choices == 0:
@@ -76,7 +76,7 @@ class Interface:
 
         try:
             self.rentals.rent_out_movies(rent)
-            print("Congratulations!!  You have rented your movie!!")
+            print(f"Congratulations!!  You have rented your movie, '{title}'!!")
         except Exception as x:
             print(f"ERROR: {x}")
 
@@ -85,27 +85,28 @@ class Interface:
         copies = int(input("Enter copies to rent: "))
         self.rentals.return_movies(title, copies)
         
-    def add_new_customer(self):
+    def add_new_customer(self):  # allows new customers to register and assigns new customer id.
         first_name = input("Enter new customer's first name: ")
         last_name = input("Enter new customer's last name: ")
         all_customers = Interface.get_all_customers_from_db()
-        print(f"Thanks you, {first_name} {last_name}, for becoing a new customer!!")
+        id = len(all_customers) + 1
+        print(f"Thanks you, {first_name} {last_name}, for becoming a new customer!!  Your customer id is {id}")
         self.save_customers(all_customers)
         
-    def save_customers(self, all_customers):
+    def save_customers(self, all_customers): # saves new customer data
         with open(customer_path, "w") as csvfile:
             customer_csv = csv.writer(csvfile, delimiter = ",")
-            customer_csv.writerow(["first_name", "last_name"])
+            customer_csv.writerow(["id", "first_name", "last_name"])
             for customer in all_customers:
                 customer_csv.writerow([customer.first_name, customer.last_name])
         
         
-    @classmethod
+    @classmethod # pulls all customer data from database.
     def get_all_customers_from_db(cls):
         with open(customer_path) as customers_file:
             customer = csv.DictReader(customers_file)
             customers_list = []
             for customer in customers:
-                customers_list.append(customer["first_name"], customer["last_name"])
+                customers_list.append(customer["id"], customer["first_name"], customer["last_name"])
         return customers_list
 

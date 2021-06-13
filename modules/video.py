@@ -14,3 +14,9 @@ class Video:
         
     def print_video(self): # print information about video
         print(f"video id: {self.video_id}, title: {self.video_title}, rating: {self.rating}, copies available: {self.num_copies}")
+        
+    def get_copies_available(self):
+        return self.num_copies
+    
+    def get_title(self):
+        return self.video_title

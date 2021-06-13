@@ -1,6 +1,5 @@
 import unittest
 from modules.customers import Customers
-from modules.rentals import Rentals
 from modules.inventory import Inventory
 
 """ Tests for proper implementation of Customers class. """
@@ -11,8 +10,8 @@ class TestCustomers(unittest.TestCase):
         
         
         
-""" Tests for proper functioning of Rentals class and instances. """
-class TestRentals(unittest.TestCase):
+""" Tests for proper functioning of Inventory class and instances. """
+class TestInventory(unittest.TestCase):
 
     def __init__(self, methodName: str) -> None:
         super().__init__(methodName=methodName)
@@ -33,13 +32,7 @@ class TestRentals(unittest.TestCase):
     def test_rental(self):
         new_copies_available_for_rent = self.test_rentals.rent_out_movies(self.copies_to_rent)
         self.assertEqual(new_copies_available_for_rent, 1)
-
-""" Tests functionality of Inventory class. """
-class TestInventory(unittest.TestCase):
-    
-    def test_inventory(self):
-        self.assertTrue(type(print_inventory()) == str)
-
         
+
 if __name__ == "__main__":
     unittest.main()
